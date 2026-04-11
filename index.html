@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureEncrypt - AES-256 File Encryption</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" style="text-align: left;">
+        <a href="https://abhi-5136.github.io/profile" class="back-btn">← Back</a>
+        <header>
+            <h1>🔐 SecureEncrypt</h1>
+            <p>AES-256-GCM Encryption for Files, Folders, Images & PDFs</p>
+        </header>
+
+        <div class="mode-selector">
+            <h3>Mode</h3>
+            <div class="mode-buttons">
+                <button class="mode-btn active" data-mode="encrypt">
+                    <span class="icon">🔒</span>
+                    <span>Encrypt</span>
+                </button>
+                <button class="mode-btn" data-mode="decrypt">
+                    <span class="icon">🔓</span>
+                    <span>Decrypt</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="file-selection">
+            <h3>Select Files</h3>
+            <div class="selection-mode" id="selectionMode">
+                <label class="radio-label">
+                    <input type="radio" name="selectionType" value="files" checked>
+                    <span>Files</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="selectionType" value="folder">
+                    <span>Folder</span>
+                </label>
+            </div>
+            <div class="drop-zone" id="dropZone">
+                <div class="drop-zone-content">
+                    <span class="drop-icon">📤</span>
+                    <p id="dropZoneText">Drag & drop files here or click to select</p>
+                    <input type="file" id="fileInput" multiple>
+                </div>
+            </div>
+            <div id="selectedFiles" class="selected-files"></div>
+        </div>
+
+        <div class="password-section">
+            <h3>Password</h3>
+            <div class="password-input-group">
+                <input type="password" id="password" placeholder="Enter your password (min 12 characters)">
+                <button type="button" id="togglePassword" class="toggle-password">👁️</button>
+            </div>
+            <div id="passwordStrength" class="password-strength"></div>
+            <div id="passwordError" class="password-error"></div>
+        </div>
+
+        <div class="action-buttons">
+            <button id="encryptBtn" class="action-btn encrypt-btn">
+                <span class="icon">🔒</span>
+                <span>Encrypt Files</span>
+            </button>
+            <button id="decryptBtn" class="action-btn decrypt-btn" disabled>
+                <span class="icon">🔓</span>
+                <span>Decrypt Files</span>
+            </button>
+        </div>
+
+        <div id="results" class="results"></div>
+
+        <div class="usage-instructions">
+            <h3>📋 How to Use</h3>
+            <div class="instructions-grid">
+                <div>
+                    <h4>To Encrypt Files:</h4>
+                    <ol>
+                        <li>Click "Encrypt" mode</li>
+                        <li>Select files or folder to encrypt (supports any file type)</li>
+                        <li>Enter a strong password (12+ chars, uppercase, lowercase, number, special character)</li>
+                        <li>Click "Encrypt Files"</li>
+                        <li>Download the encrypted files</li>
+                    </ol>
+                </div>
+                <div>
+                    <h4>To Decrypt Files:</h4>
+                    <ol>
+                        <li>Click "Decrypt" mode</li>
+                        <li>Select encrypted files (.enc or .secure)</li>
+                        <li>Enter the password used for encryption</li>
+                        <li>Click "Decrypt Files"</li>
+                        <li>View or download the decrypted files</li>
+                    </ol>
+                </div>
+            </div>
+            <p class="note"><strong>Note:</strong> All encryption happens in your browser. Your files never leave your device.</p>
+        </div>
+    </div>
+
+    <script src="crypto.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
